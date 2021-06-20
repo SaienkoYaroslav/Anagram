@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private TextView convertText;
     private EditText inputText;
+    private EditText ignoreText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
     public void onClickConvert(View view)
     {
         String textForConvert = inputText.getText().toString();
-       // String reversedString = new StringBuilder(textForConvert).reverse().toString();
-        //convertText.setText(reversedString);
         char[] charArray = textForConvert.toCharArray();
         reverse(charArray);
         String revStr = new String(charArray);
@@ -34,16 +33,18 @@ public class MainActivity extends AppCompatActivity {
     {
         convertText = findViewById(R.id.tvConvertText);
         inputText= findViewById(R.id.etInputText);
+        ignoreText = findViewById(R.id.etIgnore);
     }
 
     private void reverse(char str[])
     {
+        String userIgnore = ignoreText.getText().toString();
         int r = str.length - 1, l = 0;
         while (l < r)
         {
-            if (!Character.isAlphabetic(str[l]))
+            if (userIgnore.indexOf(str[l]) != -1)
                 l++;
-            else if(!Character.isAlphabetic(str[r]))
+            else if(userIgnore.indexOf(str[r]) != -1)
                 r--;
             else
             {
