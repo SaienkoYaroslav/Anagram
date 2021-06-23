@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Anagram</string>
-    <string name="button">Convert</string>
+    <string name="button_convert">Convert</string>
     <string name="tv"> </string>
+    <string name="text_IGNORE">IGNORE</string>
 </resources>
