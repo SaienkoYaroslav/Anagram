@@ -19,5 +19,7 @@ public class MainActivityTest {
         assertEquals("qweytr", main.reverse("qwerty", "qwe"));
     }
 
-
+    @Test
+    public void onDestroy() {
+    }
 }
