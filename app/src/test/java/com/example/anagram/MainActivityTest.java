@@ -10,11 +10,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MainActivityTest {
-    private MainActivity main;
+    private ForTest test;
+    private String userIn = "qwerty";
+    private String userIgn = "qwe";
 
     @Before
     public void setUp() {
-        main = new MainActivity();
+        test = new ForTest();
         System.out.println("Ready for testing!");
     }
 
@@ -35,8 +37,8 @@ public class MainActivityTest {
 
     @Test
     public void testReverse() {
-        main = new MainActivity();
-        String result = main.reverse("qwerty", "qwe");
+        test = new ForTest();
+        String result = test.reverse(userIn, userIgn);
         assertEquals("qweytr", result);
     }
 
