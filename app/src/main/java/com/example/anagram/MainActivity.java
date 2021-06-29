@@ -74,5 +74,10 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(reverse(textForConvert, userIgnore));
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ed_inputText.removeTextChangedListener(convertWatcher);
+        ed_ignoreText.removeTextChangedListener(convertWatcher);
+    }
 }
