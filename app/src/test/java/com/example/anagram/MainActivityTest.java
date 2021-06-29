@@ -14,7 +14,6 @@ public class MainActivityTest {
         main = new MainActivity();
     }
 
-
     @Test
     public void reverse() {
         assertEquals("qweytr", main.reverse("qwerty", "qwe"));
