@@ -1,6 +1,6 @@
 package com.example.anagram;
 
-public class ForTest {
+public class Reverser {
 
     String reverse(String userInput, String userIgnore) {
         char str[] = userInput.toCharArray();

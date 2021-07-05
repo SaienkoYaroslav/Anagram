@@ -1,7 +1,5 @@
 package com.example.anagram;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,11 +7,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
     private TextView tv_convertText;
     private EditText ed_inputText;
     private EditText ed_ignoreText;
     private TextView tv_convertTextWatcher;
+    Reverser rev = new Reverser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         }
 
         public void afterTextChanged(Editable s) {
@@ -48,30 +48,10 @@ public class MainActivity extends AppCompatActivity {
         tv_convertTextWatcher = findViewById(R.id.tv_for_TextWatcher);
     }
 
-    String reverse(String userInput, String userIgnore) {
-        char str[] = userInput.toCharArray();
-        int r = str.length - 1, l = 0;
-        while (l < r) {
-            if (userIgnore.indexOf(str[l]) != -1)
-                l++;
-            else if (userIgnore.indexOf(str[r]) != -1)
-                r--;
-            else {
-                char tmp = str[l];
-                str[l] = str[r];
-                str[r] = tmp;
-                l++;
-                r--;
-            }
-        }
-        String revStr = new String(str);
-        return revStr;
-    }
-
     private void convert(TextView tv) {
         String textForConvert = ed_inputText.getText().toString();
         String userIgnore = ed_ignoreText.getText().toString();
-        tv.setText(reverse(textForConvert, userIgnore));
+        tv.setText(rev.reverse(textForConvert, userIgnore));
     }
 
     @Override
