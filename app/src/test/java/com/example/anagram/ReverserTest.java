@@ -3,6 +3,7 @@ package com.example.anagram;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -33,8 +34,8 @@ class ReverserTest {
         System.out.println("Done with tests");
     }
 
-    @org.junit.jupiter.api.Test
-    void reverseTest() {
+    @Test
+    void reverser_shouldReturnReverseStringExceptIgnoredCharacters() {
         String result = revTest.reverse("TestWord1", "Test");
         System.out.println("Word from Reverser: " + result);
         assertEquals("Test1droW", result);
@@ -46,15 +47,22 @@ class ReverserTest {
             "apple, ap, appel",
             "banana, ban, banana",
             "0xF1, 1, Fx01",
-            "WrongKing123, 3K, k21gni3gnorW",
-            "WrongTest, Test, gnorwtest"
     })
-    void reverseParameterizedTest(String userInput, String userIgnore, String expected) {
+    void reverser_shouldReturnReverseStringExceptIgnoredCharactersParameterizedTest(String userInput, String userIgnore, String expected) {
         String result = revTest.reverse(userInput, userIgnore);
 
             assertEquals(expected, result);
 
     }
+    @ParameterizedTest
+    @CsvSource({
+            "WrongKing123, 3K, k21gni3gnorW",
+            "WrongTest, Test, gnorwtest"
+    })
+    void reverser_shouldReturnReverseStringExceptIgnoredCharactersWrongCase(String userInput, String userIgnore, String expected) {
+        String result = revTest.reverse(userInput, userIgnore);
 
+        assertEquals(expected, result);
+    }
 
 }

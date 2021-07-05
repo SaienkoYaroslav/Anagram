@@ -10,23 +10,23 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView tv_convertText;
-    private EditText ed_inputText;
-    private EditText ed_ignoreText;
-    private TextView tv_convertTextWatcher;
-    Reverser rev = new Reverser();
+    private TextView tvConvertText;
+    private EditText edInputText;
+    private EditText edIgnoreText;
+    private TextView tvConvertTextWatcher;
+    private Reverser rev = new Reverser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        ed_inputText.addTextChangedListener(convertWatcher);
-        ed_ignoreText.addTextChangedListener(convertWatcher);
+        edInputText.addTextChangedListener(convertWatcher);
+        edIgnoreText.addTextChangedListener(convertWatcher);
     }
 
     public void onClickConvert(View view) {
-        convert(tv_convertText);
+        convert(tvConvertText);
     }
 
     private final TextWatcher convertWatcher = new TextWatcher() {
@@ -37,27 +37,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void afterTextChanged(Editable s) {
-            convert(tv_convertTextWatcher);
+            convert(tvConvertTextWatcher);
         }
     };
 
     private void init() {
-        tv_convertText = findViewById(R.id.tvConvertText);
-        ed_inputText = findViewById(R.id.etInputText);
-        ed_ignoreText = findViewById(R.id.etIgnore);
-        tv_convertTextWatcher = findViewById(R.id.tv_for_TextWatcher);
+        tvConvertText = findViewById(R.id.tvConvertText);
+        edInputText = findViewById(R.id.etInputText);
+        edIgnoreText = findViewById(R.id.etIgnore);
+        tvConvertTextWatcher = findViewById(R.id.tv_for_TextWatcher);
     }
 
     private void convert(TextView tv) {
-        String textForConvert = ed_inputText.getText().toString();
-        String userIgnore = ed_ignoreText.getText().toString();
+        String textForConvert = edInputText.getText().toString();
+        String userIgnore = edIgnoreText.getText().toString();
         tv.setText(rev.reverse(textForConvert, userIgnore));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ed_inputText.removeTextChangedListener(convertWatcher);
-        ed_ignoreText.removeTextChangedListener(convertWatcher);
+        edInputText.removeTextChangedListener(convertWatcher);
+        edIgnoreText.removeTextChangedListener(convertWatcher);
     }
 }
