@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         tvConvertText = findViewById(R.id.tvConvertText);
         edInputText = findViewById(R.id.etInputText);
         edIgnoreText = findViewById(R.id.etIgnore);
-        tvConvertTextWatcher = findViewById(R.id.tv_for_TextWatcher);
+        tvConvertTextWatcher = findViewById(R.id.tvForTextWatcher);
     }
 
     private void convert(TextView tv) {
