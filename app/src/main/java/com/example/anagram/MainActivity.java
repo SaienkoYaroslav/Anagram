@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edInputText;
     private EditText edIgnoreText;
     private TextView tvConvertTextWatcher;
-    private Reverser rev = new Reverser();
+    private Reverser reverseString = new Reverser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private void convert(TextView tv) {
         String textForConvert = edInputText.getText().toString();
         String userIgnore = edIgnoreText.getText().toString();
-        tv.setText(rev.reverse(textForConvert, userIgnore));
+        tv.setText(reverseString.reverse(textForConvert, userIgnore));
     }
 
     @Override
